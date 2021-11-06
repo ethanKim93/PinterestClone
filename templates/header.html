@@ -8,10 +8,16 @@
         <span>nav3</span>
         {% if not user.is_authenticated %}
               {% comment %} /next={{requset.path} 내 현재 위치를 같이 넘겨줌으로써 로그인후 해당 페이지로 이동{% endcomment %}
-              <a href=" {% url 'accountapp:login' %}?next={{requset.path}}">
+              <a href="{% url 'accountapp:login' %}?next={{requset.path}}">
                   <span>login</span>
               </a>
+              <a href="{% url 'accountapp:create' %}">
+                  <span>SignUp</span>
+              </a>
         {% else %}
+              <a href="{% url 'accountapp:detail' pk=user.pk %}">
+                  <span>MyPage</span>
+              </a>
               <a href="{% url 'accountapp:logout' %}?next={{requset.path}}">
                   <span>logout</span>
               </a>

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 {% include 'head.html' %}
-<body>
+
+<!--body 안에 기본 글꼴 설정-->
+<body style="font-family:'NanumSquareR';">
+
   {% include 'header.html' %}
   <hr>
   {% block content  %}
@@ -10,3 +13,4 @@
   {% include 'footer.html' %}
  
 </body>
+</html>
