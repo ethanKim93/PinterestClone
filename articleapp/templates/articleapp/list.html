@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  .container div {
+    width: 280px;
+    {% comment %} /height: 500px; {% endcomment %}
+    {% comment %} background-color: antiquewhite; {% endcomment %}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+  }
+  {% comment %} container안에 있는 img 파일 크기 설정 {% endcomment %}
+  .container img{
+    width : 100%;
+    border-radius: 1rem;
+  }
+
+</style>
+
+<div class="container">
+  <div class="item1">
+      <!--가로 세로 길이만 정해주면 랜덤한 이미지를 가져옴-->
+    <img src="https://picsum.photos/200/300" alt="">
+  </div>
+  <div>
+    <img src="https://picsum.photos/200/530" alt="">
+  </div>
+    <div>
+    <img src="https://picsum.photos/200/210" alt="">
+  </div>
+    <div>
+    <img src="https://picsum.photos/200/400" alt="">
+  </div>
+    <div>
+    <img src="https://picsum.photos/200/350" alt="">
+  </div>
+    <div>
+    <img src="https://picsum.photos/200/270" alt="">
+  </div>
+    <div>
+    <img src="https://picsum.photos/200/480" alt="">
+  </div>
+    <div>
+    <img src="https://picsum.photos/200/300" alt="">
+  </div>
+    <div>  
+    <img src="https://picsum.photos/200/260" alt="">
+  </div>
+
+    <div>
+    <img src="https://picsum.photos/200/400" alt="">
+  </div>
+</div>
+
+<div style="text-align:center">
+  <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill col-3 mt-3 mb-3">
+  Create Article
+  </a>
+</div>
+{% comment %} 자바스크립트 경로 설정 {% endcomment %}
+<script src="{% static 'js/magicgrid.js' %}"></script>
+{% endblock content %}
+
+
