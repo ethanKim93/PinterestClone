@@ -3,8 +3,16 @@
 {% block content %}
 
 <style>
+    .container {
+        padding: 0;
+        margin: 0, auto;
+    }
+    .container a {
+      width: 45%;
+      max-width: 250px;
+    }
   .container div {
-    width: 280px;
+    {% comment %} width: 280px; {% endcomment %}
     {% comment %} /height: 500px; {% endcomment %}
     {% comment %} background-color: antiquewhite; {% endcomment %}
     display: flex;
@@ -19,49 +27,30 @@
   }
 
 </style>
+  {% if article_list %}
+  <div class="container">
+      {% for article in article_list %}
+      <a href="{% url 'articleapp:detail' pk=article.pk %}">
+          {% include 'snippets/card.html' with article=article %}
+      </a>
+      {% endfor %}
+  </div>
+    {% comment %} 자바스크립트 경로 설정 {% endcomment %}
+  <script src="{% static 'js/magicgrid.js' %}"></script>
+  {% else %}
+    <div class="text-center">
+      <h1>No Article YET!</h1>
+    </div>
+  {% endif %}
 
-<div class="container">
-  <div class="item1">
-      <!--가로 세로 길이만 정해주면 랜덤한 이미지를 가져옴-->
-    <img src="https://picsum.photos/200/300" alt="">
-  </div>
-  <div>
-    <img src="https://picsum.photos/200/530" alt="">
-  </div>
-    <div>
-    <img src="https://picsum.photos/200/210" alt="">
-  </div>
-    <div>
-    <img src="https://picsum.photos/200/400" alt="">
-  </div>
-    <div>
-    <img src="https://picsum.photos/200/350" alt="">
-  </div>
-    <div>
-    <img src="https://picsum.photos/200/270" alt="">
-  </div>
-    <div>
-    <img src="https://picsum.photos/200/480" alt="">
-  </div>
-    <div>
-    <img src="https://picsum.photos/200/300" alt="">
-  </div>
-    <div>  
-    <img src="https://picsum.photos/200/260" alt="">
-  </div>
-
-    <div>
-    <img src="https://picsum.photos/200/400" alt="">
-  </div>
-</div>
-
+{% include 'snippets/pagination.html' with page_obj=page_obj %}
 <div style="text-align:center">
-  <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill col-3 mt-3 mb-3">
+  <a href="{% url 'articleapp:create' %}" class="btn btn-dark rounded-pill px-2 mt-3 mb-3">
   Create Article
   </a>
+  
 </div>
-{% comment %} 자바스크립트 경로 설정 {% endcomment %}
-<script src="{% static 'js/magicgrid.js' %}"></script>
+
 {% endblock content %}
 
 

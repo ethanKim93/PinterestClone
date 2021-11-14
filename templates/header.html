@@ -2,25 +2,29 @@
       <div>
           <h1 class="Pinterest_logo">Pinterest</h1>
       </div>
-      <div>
+      <div class="pragmatic_header_navbar">
          <a href="{% url 'articleapp:list' %}">
                   <span>Articles</span>
-              </a>
-        <span>nav2</span>
-        <span>nav3</span>
+        </a>
+        <a href="{% url 'projectapp:list' %}" class="prgmatic_header_nav">
+                <span>Projects</span>
+        </a>
+         <a href="{% url 'subscribeapp:list' %}" class="prgmatic_header_nav">
+                <span>Subscribe</span>
+        </a>
         {% if not user.is_authenticated %}
               {% comment %} /next={{requset.path} 내 현재 위치를 같이 넘겨줌으로써 로그인후 해당 페이지로 이동{% endcomment %}
-              <a href="{% url 'accountapp:login' %}?next={{requset.path}}">
+              <a href="{% url 'accountapp:login' %}?next={{requset.path}}" class="prgmatic_header_nav">
                   <span>login</span>
               </a>
-              <a href="{% url 'accountapp:create' %}">
+              <a href="{% url 'accountapp:create' %}" class="prgmatic_header_nav">
                   <span>SignUp</span>
               </a>
         {% else %}
-              <a href="{% url 'accountapp:detail' pk=user.pk %}">
+              <a href="{% url 'accountapp:detail' pk=user.pk %}" class="prgmatic_header_nav">
                   <span>MyPage</span>
               </a>
-              <a href="{% url 'accountapp:logout' %}?next={{requset.path}}">
+              <a href="{% url 'accountapp:logout' %}?next={{requset.path}}" class="prgmatic_header_nav">
                   <span>logout</span>
               </a>
         {% endif %}

@@ -3,24 +3,38 @@
 
 {% block content %}
 
-  <div style="text-align:center; max-width: 500px;margin:4rem auto">
+  <div style="text-align:center; max-width: 700px;margin:4rem auto">
       <h1>
         {{ target_article.title}}
       </h1>
- 
-      <img src="{{target_article.image.url}}" alt="">
+      <h6>
+        {{target_article.writer.profile.nickname}}
+      </h6>
+      <hr>
+      <img style="width: 100%; border-radius:1rem;"
+      src="{{target_article.image.url}}" alt="">
 
-      <p>
-        {{target_article.content}}
-      </p>
+      <div class="text-left"> 
+        {{target_article.content|safe}}
+      </div>
 
-      <a href="{% url 'articleapp:update' pk=target_article.pk %}">
+      {% if target_article.writer == user %}
+      <a href="{% url 'articleapp:update' pk=target_article.pk %}"
+      class="btn btn-primary rounded-pill col-3">
         Article Update
       </a>
-      <br>
-      <a href="{% url 'articleapp:delete' pk=target_article.pk %}">
+      <a href="{% url 'articleapp:delete' pk=target_article.pk %}"
+      class="btn btn-danger rounded-pill col-3">
         Delete Article
       </a>
+      {% endif %}
+      <hr>
+      {% for comment in target_article.comment.all %}
+        {% include 'commentapp/detail.html' with comment=comment %}
+      {% endfor %}
+      {% include 'commentapp/create.html' with article=target_article %}
+
+
   </div>
 
 {% endblock content %}

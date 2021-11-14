@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'accountapp',
     'profileapp',
     'articleapp',
+    'commentapp',
+    'projectapp',
+    'subscribeapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,8 +150,8 @@ STATICFILES_DIRS = [
 ]
 
 #form에 반환 링크없을시 기본 설정되는 경로
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
-LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:hello_world')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 
 #이미지 삽입시 셋팅해줘야함
 MEDIA_URL = '/media/'
